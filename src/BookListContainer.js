@@ -1,31 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import BookList from "./BookList";
+import { useRemoteService } from "./hooks";
 
 const BookListContainer = () => {
-  const [books, setBooks] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  
-  useEffect(() => {
-    const fetchBooks = async () => {
-      setError(false);
-      setLoading(true);
+  const {data, loading, error} = useRemoteService([]);
 
-      try {
-        const res = await axios.get('http://localhost:8080/books');
-        setBooks(res.data);
-      } catch (e) {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBooks();
-  }, []);
-
-  return <BookList books={books} />
+  return <BookList books={data} />
 }
 
 export default BookListContainer;
