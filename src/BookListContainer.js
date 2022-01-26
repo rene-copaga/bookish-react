@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import React from "react";
 import BookList from "./BookList";
 import { useRemoteService } from "./hooks";
 
 const BookListContainer = () => {
   const {data, loading, error} = useRemoteService([]);
 
-  return <BookList books={data} />
+  return <BookList books={data} loading={loading} error={error} />
 }
 
 export default BookListContainer;
