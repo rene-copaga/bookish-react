@@ -1,6 +1,10 @@
 import React from 'react';
 
-const BookList = ({books}) => {
+const BookList = ({loading, books}) => {
+  if(loading) {
+    return <p>Loading...</p>
+  }
+  
   return <div data-test='book-list'>
     {
       books.map(book => (<div className='book-item'>
