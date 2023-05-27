@@ -42,4 +42,10 @@ describe('Bookish application', function() {
       expect(titles).to.deep.equal(['Building Microservices', 'Domain-driven design', 'Refactoring'])
     })
   })
+
+  it('Goes to the detail page', () => {
+    cy.visit('http://localhost:3000/');
+    cy.get('div.book-item').contains('View Details').eq(0).click();
+    cy.url().should('include', '/books/1');
+  });
 })
