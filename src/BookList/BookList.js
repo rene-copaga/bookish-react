@@ -9,6 +9,28 @@ import {
   Typography,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import {makeStyles} from "@material-ui/core";
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+  name: {
+    maxHeight: 30,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+  },
+  description: {
+    maxHeight: 40,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+  }
+}));
 
 const BookList = ({loading, error, books}) => {
   const classes = useStyles();
